@@ -1,8 +1,13 @@
 // import{} from
+import { BiCart } from "react-icons/bi";
+import MainButton from "../../components/btns/mainBtn/";
+import LeftContent from "./leftContent";
 export default function Content() {
   return (
-    <div className="py-11  [&>*]:flex-[50%] flex [&>*]:p-11 justify-evenly items-center">
-      <div className="images">hello </div>
+    <div className="py-11 gap-16  [&>*]:flex-[50%] flex [&>*]:max-w-[350px] justify-center items-center">
+      <div className="images">
+        <LeftContent />
+      </div>
       <div className="content space-y-3">
         <h3 className="text-md font-semibold text-Orange">sneaker company</h3>
         <h1 className="text-3xl font-bold text-gray-800">
@@ -23,6 +28,17 @@ export default function Content() {
             </span>
           </div>
           <div className="actual-price text-xs text-gray-400">$250.00</div>
+        </div>
+
+        <div className="ctas flex gap-2  ">
+          <div className="button-group items-center  font-bold flex bg-gray-100 gap-6 rounded-md">
+            <button className="text-Orange text-2xl p-2">-</button>
+            <span className="text-center text-md block">0</span>
+            <button className="text-Orange text-2xl p-2">+</button>
+          </div>
+          <MainButton className="shadow-xl flex items-center justify-center gap-3 shadow-Orange/30 hover:text-gray-400">
+            <BiCart /> <span>Add to cart</span>
+          </MainButton>
         </div>
       </div>
     </div>
