@@ -2,13 +2,17 @@
 import { BiCart } from "react-icons/bi";
 import MainButton from "../../components/btns/mainBtn/";
 import LeftContent from "./leftContent";
+import ModalImage from "./modal/ModalImage";
+import { useState } from "react";
 export default function Content() {
+  const [showModal, setShowModal] = useState(false);
   return (
-    <div className="py-11 gap-16  [&>*]:flex-[50%] flex [&>*]:max-w-[350px] justify-center items-center">
-      <div className="images">
+    <div className="py-11 gap-16  [&>*]:flex-[50%] flex justify-center items-center">
+      {showModal && <ModalImage setShowModal={setShowModal} />}
+      <div className="images max-w-[350px]">
         <LeftContent />
       </div>
-      <div className="content space-y-3">
+      <div className="content space-y-3  max-w-[350px]">
         <h3 className="text-md font-semibold text-Orange">sneaker company</h3>
         <h1 className="text-3xl font-bold text-gray-800">
           Fall Limited Edition <br /> Sneakers
