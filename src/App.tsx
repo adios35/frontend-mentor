@@ -1,15 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/navbar";
+import Content from "./pages/mainPage";
 
 function App() {
   return (
-    <div className="px-32">
+    <div className="px-44">
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={<h1 className="text-Very-dark-blue">hello from home</h1>}
-        />
+        <Route path="/" element={<Content />} />
       </Routes>
     </div>
   );
