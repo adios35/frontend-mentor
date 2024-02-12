@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function Content() {
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className="py-11 gap-16  [&>*]:flex-[50%] flex justify-center items-center">
+    <div className="md:py-11 py-32 gap-16  [&>*]:flex-[50%] flex flex-col md:flex-row justify-center items-center">
       {showModal && <ModalImage setShowModal={setShowModal} />}
       <div className="images max-w-[350px]">
         <LeftContent />
@@ -34,7 +34,7 @@ export default function Content() {
           <div className="actual-price text-xs text-gray-400">$250.00</div>
         </div>
 
-        <div className="ctas flex gap-2  ">
+        <div className="ctas flex flex-col md:flex-row gap-2  ">
           <div className="button-group items-center  font-bold flex bg-gray-100 gap-6 rounded-md">
             <button className="text-Orange text-2xl p-2">-</button>
             <span className="text-center text-md block">0</span>

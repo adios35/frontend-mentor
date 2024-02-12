@@ -1,4 +1,4 @@
-import { BiCart } from "react-icons/bi";
+import { BiCart, BiMenu } from "react-icons/bi";
 import "./style.css";
 import avatar from "../../assets/images/image-avatar.png";
 import { useEffect, useRef, useState } from "react";
@@ -41,15 +41,16 @@ export default function NavBar() {
     };
   }, []);
   return (
-    <div className="py-8 border-b-[1px]  border-gray-300 items-center flex gap-8">
-      <div className="logo text-3xl text-black/70 font-extrabold">
-        sneakers{" "}
+    <div className="py-8 md:border-b-[1px] fixed z-[9999] bg-white w-full pr-4 border-none  border-gray-300 items-center flex gap-8">
+      <div className="hamburger">
+        <BiMenu size="40" />
       </div>
-      <ul className="navigation sm:flex mr-auto gap-3 font-thin">
+      <div className="logo text-3xl text-black/70 font-extrabold">sneakers</div>
+      <ul className="navigation hidden p-[30px] pt-20 absolute md:static bg-white z-[9999] bottom-0 w-3/5   h-screen left-0 flex flex-col md:flex-col  mr-auto gap-3">
         {navLink.map((link, i) => (
           <li
             onClick={() => setActive(link.name)}
-            className={`${link.name == active ? "font-bold" : "font-thin"} relative group cursor-pointer text-gray-700`}
+            className={`${link.name == active ? "font-bold" : ""} font-semibold md:font-thin relative group  cursor-pointer text-gray-700`}
             key={i}
           >
             <div
@@ -59,20 +60,23 @@ export default function NavBar() {
           </li>
         ))}
       </ul>
-      <ul className="ctas text-xl text-gray-500 flex gap-5 items-center justify-between">
+      <ul className="ctas text-xl ml-auto  text-gray-500 flex gap-5 items-center justify-between">
         <li ref={ref} className="cursor-pointer">
           <button onClick={() => SetshowModalcart((pre) => !pre)}>
-            <BiCart />
+            <BiCart size={30} />
           </button>
           {showModalcart && (
-            <div className="relative">
+            <div className="  left-2/4 px-2 top-28 -translate-x-2 fixed w-full ">
               {" "}
               <CartModal />
             </div>
           )}
         </li>
         <li className="cursor-pointer">
-          <img src={avatar} className="profile  rounded-full h-8 w-8" />
+          <img
+            src={avatar}
+            className="profile hover:border-2 border-Orange  rounded-full p-[2px] h-10 w-10"
+          />
         </li>
       </ul>
     </div>
