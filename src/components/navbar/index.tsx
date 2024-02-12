@@ -4,6 +4,7 @@ import avatar from "../../assets/images/image-avatar.png";
 import { useEffect, useRef, useState } from "react";
 import CartModal from "./cartModal";
 export default function NavBar() {
+  const [showMenu, setshowMenu] = useState(false);
   const [active, setActive] = useState("");
   const [showModalcart, SetshowModalcart] = useState(false);
   const ref = useRef<HTMLLIElement | null>(null);
@@ -41,12 +42,25 @@ export default function NavBar() {
     };
   }, []);
   return (
-    <div className="py-8 md:border-b-[1px] fixed z-[9999] bg-white w-full pr-4 border-none  border-gray-300 items-center flex gap-8">
-      <div className="hamburger">
+    <div className="md:py-8 py-5 border-b-[1px] border-opacity-0 md:border-opacity-100 fixed z-[9999] right-0 w-full bg-white md:w-4/5 pr-4  md:mx-32   border-gray-300 items-center flex gap-8">
+      {" "}
+      <button
+        onClick={() => setshowMenu(true)}
+        className="hamburger ml-2 md:hidden  ml-8"
+      >
         <BiMenu size="40" />
-      </div>
+      </button>
       <div className="logo text-3xl text-black/70 font-extrabold">sneakers</div>
-      <ul className="navigation hidden p-[30px] pt-20 absolute md:static bg-white z-[9999] bottom-0 w-3/5   h-screen left-0 flex flex-col md:flex-col  mr-auto gap-3">
+      <ul
+        className={`navigation  p-[30px]
+pt-20 md:p-0  fixed  md:static z-[9999] bottom-0 w-3/5 md:w-auto z-[9999999] top-0  ${showMenu ? "" : "-translate-x-80"} md:translate-x-0 bg-white  duration-300  bottom-0 h-screen md:h-auto left-30 flex flex-col md:flex-row md:mr-2  mr-auto gap-3`}
+      >
+        <button
+          onClick={() => setshowMenu(false)}
+          className="text-2xl  md:hidden font-bold text-gray-500 absolute top-3 left-8"
+        >
+          X
+        </button>
         {navLink.map((link, i) => (
           <li
             onClick={() => setActive(link.name)}
@@ -66,7 +80,7 @@ export default function NavBar() {
             <BiCart size={30} />
           </button>
           {showModalcart && (
-            <div className="  left-2/4 px-2 top-28 -translate-x-2 fixed w-full ">
+            <div className="  px-2 md:top-20 top-28 -translate-x-2/4 left-2/4 md:translate-x-80  fixed w-full ">
               {" "}
               <CartModal />
             </div>

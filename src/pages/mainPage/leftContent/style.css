@@ -1,8 +1,14 @@
 .carousel * {
-  border-radius: 10px;
+  @apply md:rounded-md;
+}
+.carousel .thumbs-wrapper {
+  @apply hidden md:block;
 }
 .carousel-status {
   display: none;
+}
+.carousel .control-arrow {
+  @apply scale-[2] md:scale-100;
 }
 .carousel .thumb.selected,
 .carousel .thumb:hover {

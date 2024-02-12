@@ -7,7 +7,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./style.css";
 export default function LeftContent() {
   return (
-    <Carousel autoPlay={false} infiniteLoop={true}>
+    <Carousel
+      className="md:scale-100 scale-110"
+      autoPlay={false}
+      infiniteLoop={true}
+    >
       <div>
         <img src={image1} alt="image1" />
       </div>
