@@ -4,10 +4,18 @@ import MainButton from "../../components/btns/mainBtn/";
 import LeftContent from "./leftContent";
 import ModalImage from "./modal/ModalImage";
 import { useState } from "react";
+import useStore from "../../store/cart";
+const product = {
+  id: 1,
+  name: "Fall Limited Edition Sneaker",
+  quantity: 1,
+  price: 125,
+};
 export default function Content() {
+  const { cart, addToCart, decreaseQuantity } = useStore();
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className=" md:py-32 py-28 md:gap-16 gap-8  [&>*]:flex-[50%] flex md:px-10 flex-col md:flex-row justify-evenly items-center">
+    <div className=" lg:py-32 py-28 md:gap-16 gap-8  [&>*]:flex-[50%] flex md:px-10 flex-col lg:flex-row justify-evenly items-center">
       {showModal && <ModalImage setShowModal={setShowModal} />}
       <div className="images max-w-[350px]">
         <LeftContent />
@@ -38,11 +46,26 @@ export default function Content() {
 
         <div className="ctas flex flex-col md:flex-row gap-2  ">
           <div className="button-group items-center justify-between [&>*]:mx-auto  font-bold flex bg-gray-100 gap-6 rounded-md">
-            <button className="text-Orange text-2xl text-center  p-2">-</button>
-            <span className="text-center text-md block">0</span>
-            <button className="text-Orange text-2xl p-2">+</button>
+            <button
+              onClick={() => decreaseQuantity(product.id)}
+              className="text-Orange text-2xl text-center  p-2"
+            >
+              -
+            </button>
+            <span className="text-center text-md block">
+              {cart[0]?.quantity || 0}
+            </span>
+            <button
+              onClick={() => addToCart(product)}
+              className="text-Orange text-2xl p-2"
+            >
+              +
+            </button>
           </div>
-          <MainButton className="shadow-xl flex items-center justify-center gap-3 p-4 shadow-Orange/30 hover:text-gray-400">
+          <MainButton
+            onClick={() => addToCart(product)}
+            className="shadow-xl flex items-center justify-center gap-3 p-4 shadow-Orange/30 hover:text-gray-400"
+          >
             <BiCart /> <span>Add to cart</span>
           </MainButton>
         </div>
